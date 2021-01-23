@@ -1,0 +1,27 @@
+<div class="row">
+    <div class="col-lg-1"></div>
+    <div class="col-sm-12 col-md-12 col-lg-11">
+        <div class="card main-card border-0 shadow mb-4" *ngFor="let playlist of playlists">
+            <div class="card-body">
+              <h4 class="card-title">{{playlist.name}}</h4>
+              <p class="card-text text-muted">total {{playlist.totalSongs}}, {{playlist.totalDuration}} minutes</p>
+              <p class="card-text">{{playlist.description}}</p>
+              <hr>
+              <div *ngFor="let song of playlist.songs">
+                  <ul class="song-list">
+                      <li class="list-icon">
+                          <i class="material-icons">music_note</i>
+                          {{song.title}}
+                            <span class="song-duration"><span class="text-muted">by</span> {{song.artist}} . <span class="text-muted">{{song.duration}} minutes</span></span> 
+                        </li>
+                  </ul>
+              </div>
+              <br>
+              <button class="card-link btn btn-info rounded-0" (click)="onEdit(playlist.name)" >
+                  <i class="material-icons">edit</i>Edit</button>
+              <button class="card-link btn btn-danger rounded-0" (click)="noDelete(playlist.name)">
+                  <i class="material-icons">delete</i>Delete</button>
+            </div>
+        </div>
+    </div>
+</div>

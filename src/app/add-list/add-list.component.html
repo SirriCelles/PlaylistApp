@@ -1,0 +1,41 @@
+<div class="d-flex justify-content-around"
+  id="additionalInput">
+ <div>
+   <label>Song Title: </label>
+   <input
+     type="text"
+     class="form-control form-control-sm"
+     ngModel
+     name="title"
+     required
+     #title="ngModel"
+     (change)="onTitleChanges(title.value)"
+   />
+ </div>
+ <div>
+   <label>Artist: </label>
+   <input
+     type="text"
+     class="form-control form-control-sm"
+     ngModel
+     name="artist"
+     required
+     #artist="ngModel"
+     (change)="onArtistChanges(artist.value)"
+   />
+ </div>
+ <div>
+   <label for="duration"
+     >Duration <span class="text-muted">/minutes</span></label
+   >
+   <input
+     type="number"
+     class="form-control form-control-sm"
+     ngModel
+     name="duration"
+     required
+     #duration="ngModel"
+     (change)="onDurChanges(duration.value)"
+   />
+ </div>
+</div>

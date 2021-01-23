@@ -1,0 +1,145 @@
+<div class="container">
+  <div class="row">
+    <div class="col-lg-1"></div>
+    <div class="col-md-12 col-lg-11">
+      <br />
+      <div class="text-center">
+        <h1>The Playlists</h1>
+        <p>
+          Here you can create your own playlist, edit your already existing
+          playlist, add songs, and show it to the world!
+        </p>
+      </div>
+      <br />
+      <div>
+        <button
+          type="button"
+          class="btn btn-primary shadow rounded-0"
+          (click)="lgModal.show()"
+        >
+          <i class="material-icons">playlist_add</i> New Playist
+        </button>
+      </div>
+      <br />
+    </div>
+  </div>
+  <app-playlist></app-playlist>
+</div>
+
+<div
+  bsModal
+  #lgModal="bs-modal"
+  class="modal fade"
+  tabindex="-1"
+  role="dialog"
+  aria-labelledby="dialog-sizes-name1"
+>
+  <div class="modal-dialog modal-lg modal-dialog-centered">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h4 id="dialog-sizes-name1" class="modal-title pull-left">
+          Create New Playlist
+        </h4>
+        <button
+          type="button"
+          class="close pull-right"
+          (click)="lgModal.hide()"
+          aria-label="Close"
+        >
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <form class="was-validated" (ngSubmit)="onSubmit($event)" #f="ngForm">
+        <div class="modal-body" id="intialInput" ngModelGroup="intialInput">
+          <div class="form-group">
+            <label for="name">Playlist name</label>
+            <input
+              type="text"
+              class="form-control form-control-sm"
+              name="name"
+              ngModel
+              required
+            />
+          </div>
+          <div class="form-group">
+            <label>Description</label>
+            <textarea
+              type="text"
+              class="form-control form-control-sm"
+              ngModel
+              name="description"
+              required
+            ></textarea>
+          </div>
+          <div class="d-flex justify-content-around">
+            <div>
+              <label>Song Title: </label>
+              <input
+                type="text"
+                class="form-control form-control-sm"
+                ngModel
+                name="title"
+                required
+              />
+            </div>
+            <div>
+              <label>Artist: </label>
+              <input
+                type="text"
+                class="form-control form-control-sm"
+                ngModel
+                name="artist"
+                required
+              />
+            </div>
+            <div>
+              <label for="duration"
+                >Duration <span class="text-muted">/minutes</span></label
+              >
+              <input
+                type="number"
+                class="form-control form-control-sm"
+                ngModel
+                name="duration"
+                required
+              />
+            </div>
+          </div>
+        </div>
+        <div *ngIf="addSongArr.length !== 0">
+          <app-add-list *ngFor="let item of addSongArr; let i=index"></app-add-list>
+        </div>
+        <br />
+        <div class="ml-4">
+          <a style="cursor: pointer" class="mr-3" (click)="onaddSong(true)">
+            <i class="material-icons" style="color: green">add_circle</i>
+          </a>
+          <a
+            style="cursor: pointer"
+            *ngIf="addSongArr.length !== 0"
+            class="mr-3"
+            (click)="onaddSong(false)"
+          >
+            <i class="material-icons" style="color: red"
+              >indeterminate_check_box</i
+            >
+          </a>
+        </div>
+        <div class="modal-footer">
+          <button
+            type="button"
+            class="btn btn-danger"
+            (click)="lgModal.hide()"
+            aria-label="Close"
+          >
+            Cancel
+          </button>
+          <button type="submit" class="btn btn-primary">
+            Submit
+          </button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+<!-- [disabled]="!f.valid" -->

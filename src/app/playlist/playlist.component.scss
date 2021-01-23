@@ -1,0 +1,27 @@
+.main-card{
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+.song-list {
+    list-style: none;
+    -webkit-padding-start: 0px;
+    padding: 10px 0 10px 13px;
+
+   .list-icon i{
+        font-size: 1.5em;
+        vertical-align: middle;
+        margin-right: 10px;
+        padding-top: 1px;
+    }    
+}
+
+.card-link {
+    font-size: 14px;
+    i {
+        font-size: 14px;
+        vertical-align: middle;
+        // margin-right: 10px;
+        padding-right: 2px;
+    }
+
+}
